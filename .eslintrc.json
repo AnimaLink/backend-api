@@ -12,6 +12,7 @@
     "space-before-function-paren": 0,
     "no-useless-constructor": 0,
     "comma-dangle": 0,
-    "n/no-path-concat": 0
+    "n/no-path-concat": 0,
+    "prefer-promise-reject-errors": 0
   }
 }
