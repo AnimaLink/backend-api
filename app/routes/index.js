@@ -1,6 +1,10 @@
-const ProductRouter = require('./product-route')
+const AuthRouter = require('./auth-route')
+const ForumRouter = require('./forum-route')
 
-const _routes = [['/api/products', ProductRouter]]
+const _routes = [
+  ['/api/auth', AuthRouter],
+  ['/api/forums', ForumRouter],
+]
 
 const routes = (app) => {
   _routes.forEach((route) => {

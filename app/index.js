@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const errorMiddleware = require('./middlewares/error-middleware')
 const notFoundMiddleware = require('./middlewares/not-found-middleware')
 const routes = require('./routes')
+const deserializeToken = require('./middlewares/deserialize-token')
 
 const createServer = () => {
   const app = express()
@@ -22,6 +23,8 @@ const createServer = () => {
   app.get('/', (req, res) => {
     res.status(200).send('Visit /api/docs for more information')
   })
+
+  app.use(deserializeToken)
 
   routes(app)
 
