@@ -1,9 +1,11 @@
 const AuthRouter = require('./auth-route')
+const DocsRouter = require('./docs-route')
 const ForumRouter = require('./forum-route')
 
 const _routes = [
   ['/api/auth', AuthRouter],
   ['/api/forums', ForumRouter],
+  ['/api/docs', DocsRouter],
 ]
 
 const routes = (app) => {
