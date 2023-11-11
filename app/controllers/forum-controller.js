@@ -7,14 +7,28 @@ const ForumValidator = require('../validators/forum-validator')
 const ForumController = {
   createForum: async (req, res, next) => {
     try {
+      let errors = []
+
       if (!req.file) {
-        throw new ValidationError('Please upload an image')
+        errors.push('Please upload an image')
+      } else {
+        const extension = req.file.originalname.split('.').pop().toLowerCase()
+        const allowedFormats = ['jpg', 'jpeg', 'png']
+        if (!allowedFormats.includes(extension)) {
+          errors.push(
+            'Invalid file format. Please upload an image (jpg, jpeg, png)'
+          )
+        }
       }
 
       const { error, value } = ForumValidator.createForum(req.body)
 
       if (error) {
-        throw new ValidationError(error.details.map((detail) => detail.message))
+        errors = errors.concat(error.details.map((detail) => detail.message))
+      }
+
+      if (errors.length > 0) {
+        throw new ValidationError(errors)
       }
 
       await imgUpload.uploadToGcs(req, res, next)
