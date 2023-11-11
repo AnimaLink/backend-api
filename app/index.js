@@ -21,7 +21,11 @@ const createServer = () => {
   })
 
   app.get('/', (req, res) => {
-    res.status(200).send('Visit /api/docs for more information')
+    res.status(200).send(`
+        <h1>🚀 AnimaLink Backend-APIs 🚀</h1>
+        <p>Welcome to the starting point of your journey through our APIs. We hope you enjoy your journey.</p>
+        <p>For more information, please visit <a href="/api/docs">/api/docs</a>.</p>
+    `)
   })
 
   app.use(deserializeToken)
