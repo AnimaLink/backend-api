@@ -8,17 +8,17 @@ const ForumService = {
   },
   updateForum: async (payload) => {
     const forumId = parseInt(payload.id)
-    const forum = await Forum.update(payload, {
+    const result = await Forum.update(payload, {
       where: { id: forumId },
     })
-    return forum
+    return result
   },
   deleteForum: async (payload) => {
     const forumId = parseInt(payload.id)
-    const forum = await Forum.destroy({
+    const result = await Forum.destroy({
       where: { id: forumId },
     })
-    return forum
+    return result
   },
   getForumById: async (payload) => {
     const forumId = parseInt(payload.id)
