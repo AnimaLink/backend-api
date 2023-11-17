@@ -28,6 +28,10 @@
       "description": "Operations about forum"
     },
     {
+      "name": "comment",
+      "description": "Operations about forum comment"
+    },
+    {
       "name": "user",
       "description": "Operations about user"
     }
