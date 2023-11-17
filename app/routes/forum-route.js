@@ -11,5 +11,22 @@ ForumRouter.post(
   multer.single('attachment'),
   ForumController.createForum
 )
+ForumRouter.put(
+  '/:id',
+  AuthMiddleware.requireUser,
+  multer.single('attachment'),
+  ForumController.updateForum
+)
+ForumRouter.delete(
+  '/:id',
+  AuthMiddleware.requireUser,
+  ForumController.deleteForum
+)
+ForumRouter.get(
+  '/:id',
+  AuthMiddleware.requireUser,
+  ForumController.getForumById
+)
+ForumRouter.get('/', AuthMiddleware.requireUser, ForumController.getAllForum)
 
 module.exports = ForumRouter
