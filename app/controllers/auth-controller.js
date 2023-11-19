@@ -62,8 +62,26 @@ const AuthController = {
 
       const hashedPassword = await AuthService.encryptPassword(value.password)
 
+      const avatarName = [
+        'rocky',
+        'misty',
+        'felix',
+        'patches',
+        'willow',
+        'leo',
+        'pepper',
+        'buster',
+        'Buster',
+        'Buddy',
+      ]
+
+      const newAvatar = `https://api.dicebear.com/6.x/fun-emoji/png?seed=${
+        avatarName[Math.floor(Math.random() * avatarName.length)]
+      }`
+
       const payload = {
         ...value,
+        avatar: newAvatar,
         password: hashedPassword,
       }
 

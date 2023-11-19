@@ -6,6 +6,9 @@ const ForumValidator = {
       name: Joi.string().required(),
       price: Joi.string().required(),
       description: Joi.string().required(),
+      forum_type_id: Joi.number().required(),
+      forum_status_id: Joi.number().required(),
+      forum_category_id: Joi.number().required(),
     }).options({ abortEarly: false })
 
     return schema.validate(payload)
@@ -15,6 +18,9 @@ const ForumValidator = {
       name: Joi.string().required(),
       price: Joi.string().required(),
       description: Joi.string().required(),
+      forum_type_id: Joi.number().required(),
+      forum_status_id: Joi.number().required(),
+      forum_category_id: Joi.number().required(),
     }).options({ abortEarly: false })
 
     return schema.validate(payload)

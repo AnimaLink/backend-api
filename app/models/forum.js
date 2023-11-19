@@ -12,6 +12,21 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id',
         targetKey: 'id',
       })
+      Forum.belongsTo(models.ForumType, {
+        foreignKey: 'forum_type_id',
+        targetKey: 'id',
+      })
+      Forum.belongsTo(models.ForumStatus, {
+        foreignKey: 'forum_status_id',
+        targetKey: 'id',
+      })
+      Forum.belongsTo(models.ForumCategory, {
+        foreignKey: 'forum_category_id',
+        targetKey: 'id',
+      })
+      Forum.hasMany(models.Comment, {
+        foreignKey: 'forum_id',
+      })
     }
   }
   Forum.init(
@@ -21,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
       description: DataTypes.STRING,
       img_url: DataTypes.STRING,
       user_id: DataTypes.INTEGER,
+      forum_type_id: DataTypes.INTEGER,
+      forum_status_id: DataTypes.INTEGER,
+      forum_category_id: DataTypes.INTEGER,
     },
     {
       sequelize,
