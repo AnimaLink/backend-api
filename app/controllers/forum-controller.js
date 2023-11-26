@@ -72,7 +72,7 @@ const ForumController = {
         throw new NotFoundError('Forum not found')
       }
 
-      if (forum.user_id !== user.id) {
+      if (forum.userId !== user.id) {
         throw new ValidationError('You are not authorized to update this forum')
       }
 
@@ -135,9 +135,14 @@ const ForumController = {
       }
 
       const forum = await ForumService.getForumById({ id: req.params.id })
+      const user = res.locals.user
 
       if (!forum) {
         throw new NotFoundError('Forum not found')
+      }
+
+      if (forum.userId !== user.id) {
+        throw new ValidationError('You are not authorized to delete this forum')
       }
 
       if (await ForumService.deleteForum({ id: req.params.id })) {

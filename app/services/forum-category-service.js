@@ -22,6 +22,7 @@ const ForumCategoryService = {
   getAllForumCategory: async () => {
     const result = await ForumCategory.findAll()
     return result.map((forumCategory) => ({
+      id: forumCategory.id,
       name: forumCategory.name,
       imgUrl: forumCategory.img_url,
     }))

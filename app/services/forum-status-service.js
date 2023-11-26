@@ -27,6 +27,13 @@ const ForumStatusService = {
       imgUrl: status.img_url,
     }))
   },
+  deleteForumStatus: async (payload) => {
+    const forumStatusId = parseInt(payload.id)
+    const result = await ForumStatus.destroy({
+      where: { id: forumStatusId },
+    })
+    return result
+  },
 }
 
 module.exports = ForumStatusService

@@ -39,6 +39,7 @@ const AuthController = {
         status: 'success',
         message: 'Login success',
         data: {
+          userId: user.id,
           accessToken,
         },
       })
