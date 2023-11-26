@@ -49,9 +49,14 @@ const CommentController = {
     }
 
     const comment = await CommentService.getCommentById({ id: req.params.id })
+    const user = res.locals.user
 
     if (!comment) {
       throw new NotFoundError('Comment not found')
+    }
+
+    if (comment.user_id !== user.id) {
+      throw new ValidationError('You are not authorized to update this comment')
     }
 
     const { error, value } = CommentValidator.updateComment(req.body)
@@ -84,9 +89,16 @@ const CommentController = {
       }
 
       const comment = await CommentService.getCommentById({ id: req.params.id })
+      const user = res.locals.user
 
       if (!comment) {
         throw new NotFoundError('Comment not found')
+      }
+
+      if (comment.user_id !== user.id) {
+        throw new ValidationError(
+          'You are not authorized to delete this comment'
+        )
       }
 
       const result = await CommentService.deleteComment({ id: comment.id })
