@@ -22,10 +22,48 @@ const ForumService = {
   },
   getForumById: async (payload) => {
     const forumId = parseInt(payload.id)
-    const forum = await Forum.findOne({
+    const f = await Forum.findOne({
       where: { id: forumId },
+      include: [
+        {
+          model: ForumType,
+          attributes: ['id', 'name', 'img_url'],
+        },
+        {
+          model: ForumCategory,
+          attributes: ['id', 'name', 'img_url'],
+        },
+        {
+          model: ForumStatus,
+          attributes: ['id', 'name', 'img_url'],
+        },
+      ],
     })
-    return forum
+    return {
+      id: f.id,
+      userId: f.user_id,
+      name: f.name,
+      price: f.price,
+      description: f.description,
+      imgUrl: f.img_url,
+      type: {
+        id: f.ForumType.id,
+        name: f.ForumType.name,
+        imgUrl: f.ForumType.img_url,
+      },
+      category: {
+        id: f.ForumCategory.id,
+        name: f.ForumCategory.name,
+        imgUrl: f.ForumCategory.img_url,
+      },
+      status: {
+        id: f.ForumStatus.id,
+        name: f.ForumStatus.name,
+        imgUrl: f.ForumStatus.img_url,
+      },
+      createdAt: f.createdAt,
+      updatedAt: f.updatedAt,
+    }
   },
   getAllForum: async () => {
     const forums = await Forum.findAll({
