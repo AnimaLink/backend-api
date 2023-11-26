@@ -86,6 +86,10 @@
                     "data": {
                       "type": "object",
                       "properties": {
+                        "userId": {
+                          "type": "integer",
+                          "example": "1"
+                        },
                         "accessToken": {
                           "type": "string",
                           "example": "access_token"
@@ -650,6 +654,10 @@
                               "type": "integer",
                               "example": "1"
                             },
+                            "userId": {
+                              "type": "integer",
+                              "example": "1"
+                            },
                             "name": {
                               "type": "string",
                               "example": "Forum 1"
@@ -665,6 +673,57 @@
                             "imgUrl": {
                               "type": "string",
                               "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            },
+                            "type": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "category": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "status": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
                             },
                             "createdAt": {
                               "type": "string",
@@ -1711,9 +1770,9 @@
       },
       "get": {
         "tags": ["forum-aditionals"],
-        "summary": "Get all forum status",
+        "summary": "Get all forum category",
         "description": "",
-        "operationId": "getAllForumStatus",
+        "operationId": "getAllForumCategory",
         "security": [
           {
             "bearerAuth": []
@@ -1721,7 +1780,7 @@
         ],
         "responses": {
           "200": {
-            "description": "get all forum status success",
+            "description": "get all forum category success",
             "content": {
               "application/json": {
                 "schema": {
@@ -1733,12 +1792,12 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "get all forum status success"
+                      "example": "get all forum category success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "listForumStatus": {
+                        "listForumCategory": {
                           "type": "array",
                           "items": {
                             "type": "object",
@@ -1819,9 +1878,9 @@
     "/forum/categories/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
-        "summary": "Update single status of forum",
+        "summary": "Update single category of forum",
         "description": "In case you dont want to send files in <b>attachment</b> field, please uncheck <b>Send empty value</b>",
-        "operationId": "updateSingleForumStatus",
+        "operationId": "updateSingleForumCategory",
         "security": [
           {
             "bearerAuth": []
@@ -1831,7 +1890,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Update single status of forum by id"
+            "description": "Update single category of forum by id"
           }
         ],
         "requestBody": {
@@ -1855,7 +1914,7 @@
         },
         "responses": {
           "200": {
-            "description": "update forum status successful",
+            "description": "update forum category successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -1867,12 +1926,12 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "update forum status success"
+                      "example": "update forum category success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "forumStatusId": {
+                        "forumCategoryId": {
                           "type": "integer",
                           "example": "1"
                         }
@@ -1967,9 +2026,9 @@
       },
       "delete": {
         "tags": ["forum-aditionals"],
-        "summary": "Delete single status of forum",
+        "summary": "Delete single category of forum",
         "description": "",
-        "operationId": "deleteSingleForumStatus",
+        "operationId": "deleteSingleForumCategory",
         "security": [
           {
             "bearerAuth": []
@@ -1979,12 +2038,12 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Delete single status of forum by id"
+            "description": "Delete single category of forum by id"
           }
         ],
         "responses": {
           "200": {
-            "description": "delete forum status successful",
+            "description": "delete forum category successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -1996,7 +2055,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "delete forum status success"
+                      "example": "delete forum category success"
                     },
                     "data": {
                       "type": "object",
@@ -2234,7 +2293,7 @@
       },
       "get": {
         "tags": ["forum-aditionals"],
-        "summary": "Get all forum status",
+        "summary": "Get all forum types",
         "description": "",
         "operationId": "getAllForumStatus",
         "security": [
@@ -2342,9 +2401,9 @@
     "/forum/types/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
-        "summary": "Update single status of forum",
+        "summary": "Update single type of forum",
         "description": "In case you dont want to send files in <b>attachment</b> field, please uncheck <b>Send empty value</b>",
-        "operationId": "updateSingleForumStatus",
+        "operationId": "updateSingleForumType",
         "security": [
           {
             "bearerAuth": []
@@ -2354,7 +2413,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Update single status of forum by id"
+            "description": "Update single type of forum by id"
           }
         ],
         "requestBody": {
@@ -2378,7 +2437,7 @@
         },
         "responses": {
           "200": {
-            "description": "update forum status successful",
+            "description": "update forum type successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -2390,12 +2449,12 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "update forum status success"
+                      "example": "update forum type success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "forumStatusId": {
+                        "forumTypeId": {
                           "type": "integer",
                           "example": "1"
                         }
@@ -2490,9 +2549,9 @@
       },
       "delete": {
         "tags": ["forum-aditionals"],
-        "summary": "Delete single status of forum",
+        "summary": "Delete single type of forum",
         "description": "",
-        "operationId": "deleteSingleForumStatus",
+        "operationId": "deleteSingleForumType",
         "security": [
           {
             "bearerAuth": []
@@ -2502,12 +2561,12 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Delete single status of forum by id"
+            "description": "Delete single type of forum by id"
           }
         ],
         "responses": {
           "200": {
-            "description": "delete forum status successful",
+            "description": "delete forum type successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -2519,7 +2578,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "delete forum status success"
+                      "example": "delete forum type success"
                     },
                     "data": {
                       "type": "object",
@@ -2613,39 +2672,42 @@
         }
       }
     },
-    "/forum/comments": {
+    "/forum/comments/{forumId}": {
       "post": {
         "tags": ["forum-comment"],
-        "summary": "Create new forum status",
-        "description": "In case you dont want to send files in <b>attachment</b> field, please uncheck <b>Send empty value</b>",
-        "operationId": "createForumStatus",
+        "summary": "Create new forum comment",
+        "description": "",
+        "operationId": "createForumComment",
         "security": [
           {
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "forumId",
+            "description": "Create new forum comment by forum id"
+          }
+        ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "attachment": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "name": {
+                  "comment": {
                     "type": "string"
                   }
                 },
-                "required": ["name"]
+                "required": ["comment"]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "create forum status successful",
+            "description": "create comment successfull",
             "content": {
               "application/json": {
                 "schema": {
@@ -2657,12 +2719,12 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "create forum status success"
+                      "example": "create comment for forum id 6 success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "forumStatusId": {
+                        "commentId": {
                           "type": "integer",
                           "example": "1"
                         }
@@ -2757,17 +2819,24 @@
       },
       "get": {
         "tags": ["forum-comment"],
-        "summary": "Get all forum status",
+        "summary": "Get all forum comment",
         "description": "",
-        "operationId": "getAllForumStatus",
+        "operationId": "GetAllForumComment",
         "security": [
           {
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "forumId",
+            "description": "get all forum comment by forum id"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "get all forum status success",
+            "description": "get comment successfull",
             "content": {
               "application/json": {
                 "schema": {
@@ -2779,30 +2848,58 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "get all forum status success"
+                      "example": "get comment for forum 6 success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "listForumStatus": {
+                        "listComment": {
                           "type": "array",
                           "items": {
                             "type": "object",
                             "properties": {
-                              "id": {
+                              "comment": {
+                                "type": "string",
+                                "example": "mahal amat cik"
+                              },
+                              "userId": {
                                 "type": "integer",
-                                "example": 1
-                              },
-                              "name": {
-                                "type": "string",
-                                "example": "Available"
-                              },
-                              "imgUrl": {
-                                "type": "string",
-                                "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                "example": "1"
                               }
                             }
                           }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation failed"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "array",
+                          "example": [
+                            "email must be an email",
+                            "password must be minimum 6 characters"
+                          ]
                         }
                       }
                     }
@@ -2865,9 +2962,9 @@
     "/forum/comments/{id}": {
       "put": {
         "tags": ["forum-comment"],
-        "summary": "Update single status of forum",
-        "description": "In case you dont want to send files in <b>attachment</b> field, please uncheck <b>Send empty value</b>",
-        "operationId": "updateSingleForumStatus",
+        "summary": "Update single comment of forum",
+        "description": "",
+        "operationId": "updateSingleForumComment",
         "security": [
           {
             "bearerAuth": []
@@ -2877,31 +2974,27 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Update single status of forum by id"
+            "description": "Update single comment of forum by id comment"
           }
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "attachment": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "name": {
+                  "comment": {
                     "type": "string"
                   }
                 },
-                "required": ["name"]
+                "required": ["comment"]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "update forum status successful",
+            "description": "update comment success",
             "content": {
               "application/json": {
                 "schema": {
@@ -2913,12 +3006,12 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "update forum status success"
+                      "example": "update comment success"
                     },
                     "data": {
                       "type": "object",
                       "properties": {
-                        "forumStatusId": {
+                        "commentId": {
                           "type": "integer",
                           "example": "1"
                         }
@@ -3013,9 +3106,9 @@
       },
       "delete": {
         "tags": ["forum-comment"],
-        "summary": "Delete single status of forum",
+        "summary": "Delete single comment of forum",
         "description": "",
-        "operationId": "deleteSingleForumStatus",
+        "operationId": "deleteSingleForumComment",
         "security": [
           {
             "bearerAuth": []
@@ -3025,12 +3118,12 @@
           {
             "in": "path",
             "name": "id",
-            "description": "Delete single status of forum by id"
+            "description": "Delete single comment of forum by id comment"
           }
         ],
         "responses": {
           "200": {
-            "description": "delete forum status successful",
+            "description": "delete forum comment successful",
             "content": {
               "application/json": {
                 "schema": {
@@ -3042,7 +3135,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "delete forum status success"
+                      "example": "delete comment success"
                     },
                     "data": {
                       "type": "object",
