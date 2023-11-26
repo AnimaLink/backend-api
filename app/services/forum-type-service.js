@@ -28,7 +28,11 @@ const ForumTypeService = {
   },
   getAllForumType: async () => {
     const listForumType = await ForumType.findAll()
-    return listForumType
+    return listForumType.map((type) => ({
+      id: type.id,
+      name: type.name,
+      imgUrl: type.img_url,
+    }))
   },
 }
 
