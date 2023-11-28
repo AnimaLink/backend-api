@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "https://animalink-backend-api-khmozn4qbq-et.a.run.app/api"
     }
   ],
   "tags": [
