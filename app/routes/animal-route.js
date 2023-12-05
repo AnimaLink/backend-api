@@ -23,5 +23,10 @@ AnimalRouter.delete(
   AnimalController.deleteAnimal
 )
 AnimalRouter.get('/', AuthMiddleware.requireUser, AnimalController.getAllAnimal)
+AnimalRouter.get(
+  '/:id',
+  AuthMiddleware.requireUser,
+  AnimalController.getAnimalById
+)
 
 module.exports = AnimalRouter
