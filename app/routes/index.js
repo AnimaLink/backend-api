@@ -6,6 +6,7 @@ const ForumCategoryRouter = require('./forum-category-route')
 const ForumRouter = require('./forum-route')
 const ForumStatusRouter = require('./forum-status-route')
 const ForumTypeRouter = require('./forum-type-route')
+const UserRouter = require('./user-route')
 
 const _routes = [
   ['/api/auth', AuthRouter],
@@ -16,6 +17,7 @@ const _routes = [
   ['/api/forum/categories', ForumCategoryRouter],
   ['/api/forum/types', ForumTypeRouter],
   ['/api/animals', AnimalRouter],
+  ['/api/users', UserRouter],
 ]
 
 const routes = (app) => {
