@@ -15,6 +15,27 @@ const UserService = {
 
     return user.id
   },
+  getUserById: async (payload) => {
+    const userId = parseInt(payload.id)
+    const user = await User.findOne({
+      where: {
+        id: userId,
+      },
+      attributes: { exclude: ['password'] },
+    })
+
+    return user
+  },
+  updateUser: async (payload) => {
+    const userId = parseInt(payload.id)
+    const result = await User.update(payload, {
+      where: {
+        id: userId,
+      },
+    })
+
+    return result // 1 or 0
+  },
 }
 
 module.exports = UserService
