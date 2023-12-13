@@ -31,6 +31,7 @@ const AnimalService = {
     return listAnimal.map((animal) => ({
       name: animal.name,
       behaviour: animal.behaviour,
+      imgUrl: animal.img_url,
     }))
   },
 }
