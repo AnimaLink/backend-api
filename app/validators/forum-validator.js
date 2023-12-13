@@ -7,7 +7,6 @@ const ForumValidator = {
       price: Joi.string().required(),
       description: Joi.string().required(),
       forum_type_id: Joi.number().required(),
-      forum_status_id: Joi.number().required(),
       forum_category_id: Joi.number().required(),
     }).options({ abortEarly: false })
 

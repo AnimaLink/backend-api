@@ -3,6 +3,8 @@ const { StatusCodes } = require('http-status-codes')
 const imgUpload = require('../services/module/img-upload-module')
 const ForumService = require('../services/forum-service')
 const ForumValidator = require('../validators/forum-validator')
+const AiService = require('../services/ai-service')
+const ForumStatus = require('../enums/ForumStatus')
 
 const ForumController = {
   createForum: async (req, res, next) => {
@@ -31,6 +33,12 @@ const ForumController = {
         throw new ValidationError(errors)
       }
 
+      const aiResult = await AiService.checkAnimalStatus(req.file)
+
+      if (aiResult.animal_status === 'extinct') {
+        throw new ValidationError(aiResult.message)
+      }
+
       await imgUpload.uploadToGcs(req, res, next)
 
       let imageUrl = ''
@@ -45,6 +53,7 @@ const ForumController = {
         ...value,
         img_url: imageUrl,
         user_id: user.id,
+        forum_status_id: ForumStatus.AVAILABLE,
       }
 
       const forumId = await ForumService.createForum(payload)
