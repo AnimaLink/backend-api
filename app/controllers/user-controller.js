@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes')
 const { NotFoundError, ValidationError } = require('../exceptions')
 const UserService = require('../services/user-service')
 const imgUpload = require('../services/module/img-upload-module')
+const UserValidator = require('../validators/user-validator')
 
 const UserController = {
   getUserInfo: async (req, res, next) => {
@@ -36,7 +37,7 @@ const UserController = {
         throw new NotFoundError('User not found')
       }
 
-      const { error, value } = UserService.updateUser(req.body)
+      const { error, value } = UserValidator.updateUser(req.body)
 
       if (error) {
         errors = errors.concat(error.details.map((detail) => detail.message))
@@ -65,9 +66,9 @@ const UserController = {
       }
 
       const updatedUser = await UserService.updateUser({
+        id: userData.id,
         ...value,
         avatar: imageUrl,
-        id: user.id,
       })
 
       if (!updatedUser) {
