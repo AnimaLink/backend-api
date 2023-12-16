@@ -1103,7 +1103,218 @@
         }
       }
     },
-    "/forum/statuses": {
+    "/forums/histories/{userId}": {
+      "get": {
+        "tags": ["forum"],
+        "summary": "Get list histories of created forum",
+        "description": "",
+        "operationId": "getListHistoriesForum",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "Get list histories of created forum",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get data forum successfull",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "get forum success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "forum": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "userId": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Forum 1"
+                            },
+                            "price": {
+                              "type": "string",
+                              "example": "10000"
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "This is forum 1"
+                            },
+                            "imgUrl": {
+                              "type": "string",
+                              "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            },
+                            "type": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "category": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "status": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Forum not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Forum not found"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forums/statuses": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum status",
@@ -1352,7 +1563,7 @@
         }
       }
     },
-    "/forum/statuses/{id}": {
+    "/forums/statuses/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single status of forum",
@@ -1626,7 +1837,7 @@
         }
       }
     },
-    "/forum/categories": {
+    "/forums/categories": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum categories",
@@ -1875,7 +2086,7 @@
         }
       }
     },
-    "/forum/categories/{id}": {
+    "/forums/categories/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single category of forum",
@@ -2149,7 +2360,7 @@
         }
       }
     },
-    "/forum/types": {
+    "/forums/types": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum type",
@@ -2398,7 +2609,7 @@
         }
       }
     },
-    "/forum/types/{id}": {
+    "/forums/types/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single type of forum",
@@ -2672,7 +2883,7 @@
         }
       }
     },
-    "/forum/comments/{forumId}": {
+    "/forums/comments/{forumId}": {
       "post": {
         "tags": ["forum-comment"],
         "summary": "Create new forum comment",
@@ -2959,7 +3170,7 @@
         }
       }
     },
-    "/forum/comments/{id}": {
+    "/forums/comments/{id}": {
       "put": {
         "tags": ["forum-comment"],
         "summary": "Update single comment of forum",
