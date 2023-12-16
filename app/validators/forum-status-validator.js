@@ -3,14 +3,14 @@ const Joi = require('joi')
 const ForumStatusValidator = {
   createForumStatus: (payload) => {
     const schema = Joi.object({
-      name: Joi.string().required(),
+      name: Joi.string().trim().required(),
     }).options({ abortEarly: false })
 
     return schema.validate(payload)
   },
   updateForumStatus: (payload) => {
     const schema = Joi.object({
-      name: Joi.string().required(),
+      name: Joi.string().trim().required(),
     }).options({ abortEarly: false })
 
     return schema.validate(payload)

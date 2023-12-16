@@ -35,8 +35,14 @@ const ForumController = {
 
       const aiResult = await AiService.checkAnimalStatus(req.file)
 
-      if (aiResult.animal_status === 'extinct') {
-        throw new ValidationError(aiResult.message)
+      if (aiResult.status === 'Error' || aiResult.animal_status === 'extinct') {
+        const errorFromAi = [
+          aiResult.message,
+          aiResult.animal_status,
+          aiResult.predicted_animal,
+          aiResult.model_confidence,
+        ]
+        throw new ValidationError(errorFromAi)
       }
 
       await imgUpload.uploadToGcs(req, res, next)
@@ -224,6 +230,27 @@ const ForumController = {
           },
         })
       }
+    } catch (err) {
+      next(err)
+    }
+  },
+  getForumByUserId: async (req, res, next) => {
+    try {
+      if (!req.params.userId) {
+        throw new ValidationError('No id provided')
+      }
+
+      const listForum = await ForumService.getAllForumByUserId({
+        id: req.params.userId,
+      })
+
+      res.status(StatusCodes.OK).json({
+        status: 'success',
+        message: 'get forum by user id success',
+        data: {
+          listForum,
+        },
+      })
     } catch (err) {
       next(err)
     }

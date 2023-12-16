@@ -28,5 +28,10 @@ ForumRouter.get(
   ForumController.getForumById
 )
 ForumRouter.get('/', AuthMiddleware.requireUser, ForumController.getAllForum)
+ForumRouter.get(
+  '/histories/:userId',
+  AuthMiddleware.requireUser,
+  ForumController.getForumByUserId
+)
 
 module.exports = ForumRouter
