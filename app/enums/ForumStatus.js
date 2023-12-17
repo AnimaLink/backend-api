@@ -1,6 +1,6 @@
 const ForumStatus = Object.freeze({
-  AVAILABLE: 0,
-  SOLD: 1,
+  AVAILABLE: 1,
+  SOLD: 2,
 })
 
 module.exports = ForumStatus
