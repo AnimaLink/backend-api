@@ -36,7 +36,11 @@
       "description": "Operations about forum comment"
     },
     {
-      "name": "user",
+      "name": "animals",
+      "description": "Operations about animals data"
+    },
+    {
+      "name": "users",
       "description": "Operations about user"
     }
   ],
@@ -326,9 +330,6 @@
                   "forum_type_id": {
                     "type": "integer"
                   },
-                  "forum_status_id": {
-                    "type": "integer"
-                  },
                   "forum_category_id": {
                     "type": "integer"
                   }
@@ -339,7 +340,6 @@
                   "price",
                   "description",
                   "forum_type_id",
-                  "forum_status_id",
                   "forum_category_id"
                 ]
               }
@@ -1103,7 +1103,218 @@
         }
       }
     },
-    "/forum/statuses": {
+    "/forums/histories/{userId}": {
+      "get": {
+        "tags": ["forum"],
+        "summary": "Get list histories of created forum",
+        "description": "",
+        "operationId": "getListHistoriesForum",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "description": "Get list histories of created forum",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get data forum successfull",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "get forum success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "forum": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "userId": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Forum 1"
+                            },
+                            "price": {
+                              "type": "string",
+                              "example": "10000"
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "This is forum 1"
+                            },
+                            "imgUrl": {
+                              "type": "string",
+                              "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            },
+                            "type": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "category": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "status": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "integer",
+                                  "example": "1"
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "example": "Available"
+                                },
+                                "imgUrl": {
+                                  "type": "string",
+                                  "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                                }
+                              }
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Forum not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Forum not found"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forums/statuses": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum status",
@@ -1352,7 +1563,7 @@
         }
       }
     },
-    "/forum/statuses/{id}": {
+    "/forums/statuses/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single status of forum",
@@ -1626,7 +1837,7 @@
         }
       }
     },
-    "/forum/categories": {
+    "/forums/categories": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum categories",
@@ -1875,7 +2086,7 @@
         }
       }
     },
-    "/forum/categories/{id}": {
+    "/forums/categories/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single category of forum",
@@ -2149,7 +2360,7 @@
         }
       }
     },
-    "/forum/types": {
+    "/forums/types": {
       "post": {
         "tags": ["forum-aditionals"],
         "summary": "Create new forum type",
@@ -2398,7 +2609,7 @@
         }
       }
     },
-    "/forum/types/{id}": {
+    "/forums/types/{id}": {
       "put": {
         "tags": ["forum-aditionals"],
         "summary": "Update single type of forum",
@@ -2672,7 +2883,7 @@
         }
       }
     },
-    "/forum/comments/{forumId}": {
+    "/forums/comments/{forumId}": {
       "post": {
         "tags": ["forum-comment"],
         "summary": "Create new forum comment",
@@ -2959,7 +3170,7 @@
         }
       }
     },
-    "/forum/comments/{id}": {
+    "/forums/comments/{id}": {
       "put": {
         "tags": ["forum-comment"],
         "summary": "Update single comment of forum",
@@ -3226,6 +3437,846 @@
               }
             }
           }
+        }
+      }
+    },
+    "/animals": {
+      "get": {
+        "tags": ["animals"],
+        "summary": "Get all animals",
+        "description": "",
+        "operationId": "getAllAnimals",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all animals successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Get all animals success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "listAnimals": {
+                          "type": "array",
+                          "example": [
+                            {
+                              "name": "Animal 1",
+                              "behaviour": "Behaviour 1",
+                              "imgUrl": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["animals"],
+        "summary": "Create new animal",
+        "description": "",
+        "operationId": "createAnimal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attachment": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "behaviour": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "attachment", "description", "behaviour"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create animal successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "create animal success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "animalId": {
+                          "type": "integer",
+                          "example": "1"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation failed"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "array",
+                          "example": [
+                            "email must be an email",
+                            "password must be minimum 6 characters"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/animals/{id}": {
+      "put": {
+        "tags": ["animals"],
+        "summary": "Update single animal",
+        "description": "",
+        "operationId": "updateAnimal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attachment": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "behaviour": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "description", "behaviour"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "update animal successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "update animal success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "animalId": {
+                          "type": "integer",
+                          "example": "1"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation failed"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "array",
+                          "example": [
+                            "email must be an email",
+                            "password must be minimum 6 characters"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["animals"],
+        "summary": "Get detail animal by id",
+        "description": "",
+        "operationId": "getDetailAnimal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Get detail animal by id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get detail animal successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "get detail animal success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "animal": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "Animal 1"
+                            },
+                            "imgUrl": {
+                              "type": "string",
+                              "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "Animal 1 description"
+                            },
+                            "behaviour": {
+                              "type": "string",
+                              "example": "Animal 1 behaviour"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation failed"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "array",
+                          "example": [
+                            "email must be an email",
+                            "password must be minimum 6 characters"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["animals"],
+        "summary": "Delete single animal",
+        "description": "",
+        "operationId": "deleteSingleAnimal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Delete single animal"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete animal data successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "delete  animal data success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Validation failed"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "type": "array",
+                          "example": [
+                            "email must be an email",
+                            "password must be minimum 6 characters"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Get info user login",
+        "description": "",
+        "operationId": "getInfoUser",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get info user login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "get user login info success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": "1"
+                            },
+                            "first_name": {
+                              "type": "string",
+                              "example": "John"
+                            },
+                            "last_name": {
+                              "type": "string",
+                              "example": "Doe"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "john@gmail.com"
+                            },
+                            "wa_number": {
+                              "type": "string",
+                              "example": "08123456789"
+                            },
+                            "avatar": {
+                              "type": "string",
+                              "example": "https://storage.googleapis.com/AWOWKOWKOWK/20231116-162039"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2023-11-09T08:31:17.000Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "fail"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Something went wrong please try again later."
+                    },
+                    "data": {
+                      "type": "object",
+                      "example": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": ["users"],
+        "summary": "Update info user login",
+        "description": "In case you dont want to send files in <b>attachment</b> field, please uncheck <b>Send empty value</b>",
+        "operationId": "updateInfoUser",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attachment": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "wa_number": {
+                    "type": "string"
+                  }
+                },
+                "required": ["first_name", "last_name", "wa_number"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
         }
       }
     }

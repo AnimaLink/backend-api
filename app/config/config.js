@@ -18,15 +18,15 @@ module.exports = {
     database: DB_NAME,
     host: DB_HOST,
     dialect: DB_DIALECT,
-    dialectOptions: {
-      ssl: {
-        sslmode: 'verify-full',
-        rejectUnauthorized: false,
-        key: DB_KEY,
-        cert: DB_CERT,
-        ca: DB_ROOT_CERT,
-      },
-    },
+    // dialectOptions: {
+    //   ssl: {
+    //     sslmode: 'verify-full',
+    //     rejectUnauthorized: false,
+    //     key: DB_KEY,
+    //     cert: DB_CERT,
+    //     ca: DB_ROOT_CERT,
+    //   },
+    // },
   },
   production: {
     username: DB_USER,

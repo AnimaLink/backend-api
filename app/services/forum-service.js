@@ -197,6 +197,47 @@ const ForumService = {
       })),
     }
   },
+  getAllForumByUserId: async (payload) => {
+    const userId = parseInt(payload.id)
+    const forums = await Forum.findAll({
+      include: [
+        {
+          model: ForumType,
+          attributes: ['id', 'name', 'img_url'],
+        },
+        {
+          model: ForumCategory,
+          attributes: ['id', 'name', 'img_url'],
+        },
+        {
+          model: ForumStatus,
+          attributes: ['id', 'name', 'img_url'],
+        },
+      ],
+      where: {
+        user_id: userId,
+      },
+    })
+    return forums.map((forum) => ({
+      name: forum.name,
+      imgUrl: forum.img_url,
+      type: {
+        id: forum.ForumType.id,
+        name: forum.ForumType.name,
+        imgUrl: forum.ForumType.img_url,
+      },
+      category: {
+        id: forum.ForumCategory.id,
+        name: forum.ForumCategory.name,
+        imgUrl: forum.ForumCategory.img_url,
+      },
+      status: {
+        id: forum.ForumStatus.id,
+        name: forum.ForumStatus.name,
+        imgUrl: forum.ForumStatus.img_url,
+      },
+    }))
+  },
 }
 
 module.exports = ForumService
