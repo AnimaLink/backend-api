@@ -10,7 +10,6 @@ const UserRouter = require('./user-route')
 
 const _routes = [
   ['/api/auth', AuthRouter],
-  ['/api/forums', ForumRouter],
   ['/api/docs', DocsRouter],
   ['/api/forums/comments', CommentRouter],
   ['/api/forums/statuses', ForumStatusRouter],
@@ -18,6 +17,7 @@ const _routes = [
   ['/api/forums/types', ForumTypeRouter],
   ['/api/animals', AnimalRouter],
   ['/api/users', UserRouter],
+  ['/api/forums', ForumRouter],
 ]
 
 const routes = (app) => {

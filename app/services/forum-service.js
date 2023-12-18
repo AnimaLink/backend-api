@@ -39,6 +39,7 @@ const ForumService = {
         },
       ],
     })
+
     return {
       id: f.id,
       userId: f.user_id,
@@ -83,6 +84,7 @@ const ForumService = {
       ],
     })
     return forums.map((forum) => ({
+      id: forum.id,
       name: forum.name,
       imgUrl: forum.img_url,
       type: {
@@ -125,6 +127,7 @@ const ForumService = {
       },
     })
     return forums.map((forum) => ({
+      id: forum.id,
       name: forum.name,
       imgUrl: forum.img_url,
       type: {
@@ -177,6 +180,7 @@ const ForumService = {
       itemsPerPage: limit,
       totalItems,
       listForum: forums.map((forum) => ({
+        id: forum.id,
         name: forum.name,
         imgUrl: forum.img_url,
         type: {
@@ -219,6 +223,7 @@ const ForumService = {
       },
     })
     return forums.map((forum) => ({
+      id: forum.id,
       name: forum.name,
       imgUrl: forum.img_url,
       type: {
