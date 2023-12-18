@@ -29,6 +29,7 @@ const AnimalService = {
   getAllAnimals: async () => {
     const listAnimal = await Animal.findAll()
     return listAnimal.map((animal) => ({
+      id: animal.id,
       name: animal.name,
       behaviour: animal.behaviour,
       imgUrl: animal.img_url,
