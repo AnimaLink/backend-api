@@ -84,6 +84,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         <td>/forums/histories/{userId}</td>
         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
     </tr>
+     <tr>
+        <td colspan="3"><b>Forums-aditionals</b></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/forums/statuses</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums/statuses</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/forums/statuses/{id}</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/forums/statuses/{id}</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    </tr>
+    
 </table>
 
 ## Built With
