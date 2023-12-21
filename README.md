@@ -29,7 +29,7 @@
 </details>
 
 ## About The Project
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ante vitae dui dictum luctus eu sagittis lorem. Duis mattis nibh sit amet pharetra facilisis. Suspendisse gravida euismod odio vel congue. Nulla eget pharetra urna. Integer ultricies lectus enim, in euismod arcu ornare non. Aenean mattis accumsan sem, vel commodo dui rhoncus non. Mauris bibendum nec odio vitae consequat. Quisque elit ipsum, imperdiet sed ipsum ut, accumsan tincidunt dui. Nam nec eros mattis, luctus mauris ut, finibus massa.
+This project is a robust and scalable backend system designed to power a dynamic mobile application. Our backend system is the backbone of the application, handling everything from data management to server-side logic.
 
 ### Endpoint API
 At this point, we have developed over 30 endpoints integrated with the ML Model to facilitate our mobile application.
@@ -46,12 +46,12 @@ At this point, we have developed over 30 endpoints integrated with the ML Model 
      <tr>
         <td>POST</td>
         <td>/auth/login</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>User Login</td>
     </tr>
      <tr>
         <td>POST</td>
         <td>/auth/register</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>User Register.</td>
     </tr>
      <tr>
         <td colspan="3"><b>Forums</b></td>
@@ -59,32 +59,42 @@ At this point, we have developed over 30 endpoints integrated with the ML Model 
     <tr>
         <td>POST</td>
         <td>/forums</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Create new forum.</td>
     </tr>
      <tr>
         <td>PUT</td>
         <td>/forums/{id}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Update existing forum.</td>
     </tr>
     <tr>
         <td>DELETE</td>
         <td>/forums/{id}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Delete existing forum.</td>
     </tr>
     <tr>
         <td>GET</td>
         <td>/forums/{id}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Get detail of single forum data.</td>
     </tr>
     <tr>
         <td>GET</td>
         <td>/forums</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Get all of forum data without paging.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums?name=</td>
+        <td>Get all of forum data filtered by name.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums?page=&limit=</td>
+        <td>Get all of forum data with paging.</td>
     </tr>
      <tr>
         <td>GET</td>
         <td>/forums/histories/{userId}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Get all of forum data filtered by creator.</td>
     </tr>
      <tr>
         <td colspan="3"><b>Forums-aditionals</b></td>
@@ -92,24 +102,122 @@ At this point, we have developed over 30 endpoints integrated with the ML Model 
     <tr>
         <td>POST</td>
         <td>/forums/statuses</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Create new forum status.</td>
     </tr>
      <tr>
         <td>GET</td>
         <td>/forums/statuses</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Get all of forum status data.</td>
     </tr>
     <tr>
         <td>PUT</td>
         <td>/forums/statuses/{id}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Update single data of selected forum status.</td>
     </tr>
     <tr>
         <td>DELETE</td>
         <td>/forums/statuses/{id}</td>
-        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        <td>Delete single data of selected forum status.</td>
     </tr>
-    
+    <tr>
+        <td>POST</td>
+        <td>/forums/categories</td>
+        <td>Create new forum category.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums/categories</td>
+        <td>Get all of forum category data.</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/forums/categories/{id}</td>
+        <td>Update single data of selected forum category.</td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/forums/categories/{id}</td>
+        <td>Delete single data of selected forum category.</td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/forums/types</td>
+        <td>Create new forum type.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums/types</td>
+        <td>Get all of forum type.</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/forums/types/{id}</td>
+        <td>Update single data of selected forum type.</td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/forums/types/{id}</td>
+        <td>Delete single data of selected forum type.</td>
+    </tr>
+       <tr>
+        <td colspan="3"><b>Forums-comment</b></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/forums/comments/{forumId}</td>
+        <td>Create new forum comment.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/forums/comments/{forumId}</td>
+        <td>Get all of forum comment.</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/forums/comments/{id}</td>
+        <td>Update single data of selected forum comment.</td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/forums/comments/{id}</td>
+        <td>Delete single data of selected forum comment.</td>
+    </tr>
+    <tr>
+        <td colspan="3"><b>Animals</b></td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/animals</td>
+        <td>Create new animal data.</td>
+    </tr>
+     <tr>
+        <td>GET</td>
+        <td>/animals</td>
+        <td>Get all of animal data.</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>/animals/{id}</td>
+        <td>Update single data of selected animal.</td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>/animals/{id}</td>
+        <td>Delete single data of selected animal.</td>
+    </tr>
+     <tr>
+        <td colspan="3"><b>Users</b></td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/users</td>
+        <td>Get user login info.</td>
+    </tr>
+     <tr>
+        <td>PUT</td>
+        <td>/users</td>
+        <td>Update user login info.</td>
+    </tr>
 </table>
 
 ### Built With
@@ -119,6 +227,7 @@ At this point, we have developed over 30 endpoints integrated with the ML Model 
 - Axios
 - Joi
 - MySQL
+- JWT
 
 ### Cloud Architecture
 We leverage the power of Google Cloud Platform's Serverless offerings for our services.
@@ -137,7 +246,7 @@ We employ Swagger UI for effective API documentation, which can be accessed at <
 |Class|Bangkit ID|Name|
 |-----|----------|----|
 |CC-38|C179BSY3946|Arif D. Nugroho|
-|CC-27|C013BSY3032|Rizki Yudha P|
+|CC-27|C013BSY3032|Rizky Yudha Pratama|
 
 ## Try This Project
 Dive into this project and discover its functionalities.
