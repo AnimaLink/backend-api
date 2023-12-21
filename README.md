@@ -4,7 +4,8 @@
 
 # Cloud Computing Path
 
-Table of Contents
+<details>
+  <summary>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -18,19 +19,20 @@ Table of Contents
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Try This Project</a>
+      <a href="#try-this-project">Try This Project</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
   </ol>
+</details>
 
 ## About The Project
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac ante vitae dui dictum luctus eu sagittis lorem. Duis mattis nibh sit amet pharetra facilisis. Suspendisse gravida euismod odio vel congue. Nulla eget pharetra urna. Integer ultricies lectus enim, in euismod arcu ornare non. Aenean mattis accumsan sem, vel commodo dui rhoncus non. Mauris bibendum nec odio vitae consequat. Quisque elit ipsum, imperdiet sed ipsum ut, accumsan tincidunt dui. Nam nec eros mattis, luctus mauris ut, finibus massa.
 
-## Endpoint API
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+### Endpoint API
+At this point, we have developed over 30 endpoints integrated with the ML Model to facilitate our mobile application.
 
 <table width="100%">
     <tr>
@@ -110,8 +112,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     
 </table>
 
-## Built With
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+### Built With
 
 - Node.js (express)
 - Sequelize
@@ -119,26 +120,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 - Joi
 - MySQL
 
-## Cloud Architecture
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+### Cloud Architecture
+We leverage the power of Google Cloud Platform's Serverless offerings for our services.
 
-## Entity Relationship Diagram 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+![Animalink CC](https://i.ibb.co/3fgWvw1/animalink-cloud-drawio-1.png)
 
-## Api Docs 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+### Entity Relationship Diagram 
+We utilize an SQL Database, keeping strong relationships as a priority.
 
-## CC Members 
+![Animalink ERD](https://i.ibb.co/tmqzCJ3/Screenshot-2023-12-21-093819.png)
+
+### Api Docs 
+We employ Swagger UI for effective API documentation, which can be accessed at <a href="#">base_url/api/docs</a>.
+
+### CC Members 
 |Class|Bangkit ID|Name|
 |-----|----------|----|
-|CC-38|12345678|Arif D. Nugroho|
-|CC-27|12345678|Rizki Yudha P|
+|CC-38|C179BSY3946|Arif D. Nugroho|
+|CC-27|C013BSY3032|Rizki Yudha P|
 
 ## Try This Project
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Dive into this project and discover its functionalities.
 
 ### Prerequisites
-Make sure you have the following software installed on your system:
+Before you start, ensure that you have the following software installed on your system:
 - Node.js
 - MySQL
 
