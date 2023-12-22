@@ -1,4 +1,4 @@
-const { Comment } = require('../models')
+const { Comment, User } = require('../models')
 
 const CommentService = {
   createComment: async (payload) => {
@@ -38,10 +38,21 @@ const CommentService = {
       where: {
         forum_id: forumId,
       },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'first_name', 'avatar'],
+        },
+      ],
     })
     return comments.map((c) => ({
+      id: c.id,
       comment: c.comment,
-      userId: c.user_id,
+      user: {
+        id: c.User.id,
+        name: c.User.first_name,
+        avatar: c.User.avatar,
+      },
     }))
   },
 }
